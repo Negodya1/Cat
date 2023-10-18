@@ -10,18 +10,24 @@ protected:
 		int green;
 		int blue;
 	} color;
-	double weight;
+	int weight;
 
 public:
-	Cat(std::string _name, std::string _kind, int _age, struct Color _color, bool _gender, double _weight): Tiger(_name, _age, _gender) {
+	Cat(std::string _name, std::string _kind, int _age, struct Color _color, bool _gender, int _weight): Tiger(_name, _age, _gender) {
 		color = _color;
 		kind = _kind;
 		weight = _weight;
+	}
+	Cat(): Tiger() {
+		color = { 0, 0, 0 };
+		kind = "";
+		weight = 0;
 	}
 	~Cat();
 
 	virtual void printInfo();
 	virtual int getInt();
+	virtual std::string getString();
 
 	Cat& operator++();
 	Cat operator++(int);
@@ -53,7 +59,7 @@ public:
 		std::string _kind;
 		int _age, red, green, blue;
 		std::string _gender;
-		double _weight;
+		int _weight;
 		in >> _name >> _kind >> _age >> red >> green >> blue >> _gender >> _weight;
 		_cat.name = _name;
 		_cat.age = _age;

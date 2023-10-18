@@ -15,11 +15,16 @@ int Cat::getInt() {
 	return std::time(0);
 }
 
+std::string Cat::getString() {
+	return "Cat " + name + " " + kind + " " + std::to_string(age) + " " + std::to_string(color.red) + " " + std::to_string(color.green) + " " + std::to_string(color.blue) + " " + std::to_string(gender) + " " + std::to_string(weight);
+}
+
 Cat::~Cat() {
 	kind.clear();
 }
 
 Cat& Cat::operator++() {
+	if (age < 1) weight *= 10;
 	age += 1;
 	return *this;
 }
@@ -30,6 +35,7 @@ Cat Cat::operator++(int) {
 }
 
 Cat Cat::operator+(const int add) {
+	if (age < 1 && add > 1) weight *= 10;
 	age += add;
 	return *this;
 }

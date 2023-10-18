@@ -8,3 +8,17 @@ void Animal::printInfo() {
 int Animal::getInt() {
 	return 0;
 }
+
+std::string Animal::getString() {
+	return "Animal";
+}
+
+int Animal::getCount() {
+	if (count == NULL) count = new int(0);
+	return *count;
+}
+
+void Animal::addCount(int add) {
+	if (count == NULL) count = new int(0);
+	*count += add;
+}

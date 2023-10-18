@@ -9,6 +9,11 @@ protected:
 	bool gender;
 	int age;
 public:
+	Tiger() {
+		name = "";
+		age = 0;
+		gender = 0;
+	}
 	Tiger(std::string _name, int _age, bool _gender) {
 		name = _name;
 		age = _age;
@@ -18,6 +23,7 @@ public:
 
 	virtual void printInfo();
 	virtual int getInt();
+	virtual std::string getString();
 
 	Tiger& operator++();
 	Tiger operator++(int);
@@ -34,7 +40,7 @@ public:
 		return stream;
 	}
 
-	friend std::istream& operator >> (std::istream& in, Tiger& _tiger) {
+	friend std::istream& operator>>(std::istream& in, Tiger& _tiger) {
 		std::string _name;
 		int _age;
 		std::string _gender;

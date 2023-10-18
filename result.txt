@@ -1,0 +1,4 @@
+Tiger Bars 10 0
+Tiger Persik 7 0
+Cat Barsik Persidskii 4 128 128 128 0 66
+Cat Pushok Sphinks 2 128 64 64 0 40

@@ -14,6 +14,10 @@ int Tiger::getInt() {
 	return rand();
 }
 
+std::string Tiger::getString() {
+	return "Tiger " + name + " " + std::to_string(age) + " " + std::to_string(gender);
+}
+
 Tiger::~Tiger() {
 	name.clear();
 }
