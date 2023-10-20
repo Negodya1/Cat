@@ -8,7 +8,7 @@
 int main() {
     setlocale(LC_ALL, "Russian");
 
-    //Раннее связывание
+    //Раннее связывание, тестирование методов
     Animal test = Animal();
 
     Cat testc = Cat("Барсик", "Персидский", 4, {164, 128, 128}, 1, 87);
@@ -37,6 +37,7 @@ int main() {
     std::cout << "Выберите тип данных для позднего связывания (0 - Animal, 1 - Tiger, 2 - Cat): ";
     std::cin >> type;
 
+    //Создание экземпляра выбранного типа данных и вывод информации
     if (type == 0) late = new Animal();
     else if (type == 1) late = new Tiger("Барсик", 8, 0);
     else late = new Cat("Барсик", "Персидский", 4, { 164, 128, 128 }, 1, 87);
@@ -50,7 +51,7 @@ int main() {
 
     if (type == 0) {
         std::vector<Tiger *> vect;
-
+        //Добавлять в вектор новые экземпляры классов, пока пользователь не введёт 0
         do {
             std::cout << "Выберите тип данных (0 - выход, 1 - Tiger, 2 - Cat): ";
             std::cin >> type;
@@ -60,18 +61,19 @@ int main() {
                 std::cout << "Введите параметры нового объекта (Имя, Возраст, Пол): ";
                 std::cin >> *buft;
                 vect.push_back(buft);
-                std::cout << vect[vect.size() - 1]->getString() << std::endl;
+                std::cout << vect[vect.size() - 1]->getString() << std::endl; //Вывод строки полученного класса
             }
             else if (type == 2) {
                 Cat* buft = new Cat("Барсик", "Персидский", 4, { 164, 128, 128 }, 1, 87);
                 std::cout << "Введите параметры нового объекта (Имя, Порода, Возраст, Цвет (красный, зелёный, синий), Пол, Вес): ";
                 std::cin >> *buft;
                 vect.push_back(buft);
-                std::cout << vect[vect.size() - 1]->getString() << std::endl;
+                std::cout << vect[vect.size() - 1]->getString() << std::endl; //Вывод строки полученного класса
             }
 
         } while (type != 0);
 
+        //Сохранение полученного вектора в файл
         std::ofstream f("result.txt");
         for (Tiger * cur: vect) {
             f << cur->getString() << std::endl;
@@ -82,10 +84,11 @@ int main() {
     else {
         std::vector<Animal*> vect;
 
+        //Загрузка экземпляров класса из файла
         std::ifstream f("result.txt");
         while (!f.eof()) {
             std::string type;
-            f >> type;
+            f >> type; //Определение типа, затем создание экземпляра и вставка его в вектор
             if (type == "Animal") vect.push_back(new Animal());
             else if (type == "Tiger") {
                 Tiger* buf = new Tiger();
@@ -103,6 +106,7 @@ int main() {
         }
         f.close();
 
+        //Вывод всех экземпляров на экран
         for (Animal* cur : vect) {
             std::cout << cur->getString() << std::endl;
             delete cur;

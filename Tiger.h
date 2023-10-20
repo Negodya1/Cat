@@ -3,18 +3,19 @@
 #include <string>
 #include <iostream>
 
+//Класс Тигр, наследует класс Животное
 class Tiger : public Animal {
 protected:
-	std::string name;
-	bool gender;
-	int age;
+	std::string name; //Имя
+	bool gender; //Пол
+	int age; //Возраст
 public:
-	Tiger() {
+	Tiger() { //Конструктор по-умолчанию
 		name = "";
 		age = 0;
 		gender = 0;
 	}
-	Tiger(std::string _name, int _age, bool _gender) {
+	Tiger(std::string _name, int _age, bool _gender) { //Конструктор
 		name = _name;
 		age = _age;
 		gender = _gender;
@@ -28,6 +29,8 @@ public:
 	Tiger& operator++();
 	Tiger operator++(int);
 
+	//Оператор <<
+	//Помещает поля класса в поток
 	friend std::ostream& operator<<(std::ostream& stream, const Tiger& _tiger) {
 		stream << "Tiger ";
 		stream << "Name: ";
@@ -40,6 +43,8 @@ public:
 		return stream;
 	}
 
+	//Оператор >>
+	//Заполняет поля класса из потока
 	friend std::istream& operator>>(std::istream& in, Tiger& _tiger) {
 		std::string _name;
 		int _age;

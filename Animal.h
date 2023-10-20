@@ -1,8 +1,10 @@
 #pragma once
 #include <string>
 
+//Статическоне поле для подсчёта экземпляров класса
 static int* count;
 
+//Абстрактный класс Животное
 class Animal {
 private:
 	

@@ -2,23 +2,24 @@
 #include "Tiger.h"
 #include <string>
 
+//Класс Кот, наследует класс Тигр
 class Cat : public Tiger {
 protected:
-	std::string kind;
-	struct Color {
-		int red;
-		int green;
-		int blue;
+	std::string kind; //Порода
+	struct Color { //Структура отвечающая за окрас
+		int red; //Красный
+		int green; //Зелёный
+		int blue; //Синий
 	} color;
-	int weight;
+	int weight; //Вес
 
 public:
-	Cat(std::string _name, std::string _kind, int _age, struct Color _color, bool _gender, int _weight): Tiger(_name, _age, _gender) {
+	Cat(std::string _name, std::string _kind, int _age, struct Color _color, bool _gender, int _weight): Tiger(_name, _age, _gender) { //Конструктор
 		color = _color;
 		kind = _kind;
 		weight = _weight;
 	}
-	Cat(): Tiger() {
+	Cat(): Tiger() { //Конструктор по-умолчанию
 		color = { 0, 0, 0 };
 		kind = "";
 		weight = 0;
@@ -32,6 +33,8 @@ public:
 	Cat& operator++();
 	Cat operator++(int);
 
+	//Оператор <<
+	//Помещает поля класса в поток
 	friend std::ostream& operator<<(std::ostream& stream, const Cat& _cat) {
 		stream << "Cat ";
 		stream << "Name: ";
@@ -54,6 +57,8 @@ public:
 		return stream;
 	}
 
+	//Оператор >>
+	//Заполняет поля класса из потока
 	friend std::istream& operator >> (std::istream& in, Cat& _cat) {
 		std::string _name;
 		std::string _kind;
